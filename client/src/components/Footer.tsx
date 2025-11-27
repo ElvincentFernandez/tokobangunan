@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Alamat Kami</h3>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Jl. Merung Raya No.111<br />
+              Jl. Meruyung Raya No.111<br />
               Kec. Limo, Kota Depok<br />
               Jawa Barat, 16514<br />
               Indonesia

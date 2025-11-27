@@ -7,16 +7,15 @@ const Home = () => {
       {/* --- 1. Hero Section --- */}
       {/* Ganti '/images/hero-bg.jpg' dengan path gambar toko kamu */}
       <section
-        className="relative h-[500px] bg-cover bg-center bg-no-repeat flex items-center"
+        className="relative h-[650px] bg-cover bg-center bg-no-repeat flex items-center"
         style={{
-          backgroundImage:
-            "url('/Home/scandinavian-interior-mockup-wall-decal-background 1.png')",
+          backgroundImage: "url('/assets/images/mandiri.png')",
         }}
       >
+
         <div className="absolute inset-0"></div>
         <div className="container mx-auto px-6 h-full flex items-center justify-end">
           <div className="relative bg-[#f9ddbc] p-8 rounded-lg shadow-lg max-w-md">
-            <p className="font-semibold text-gray-700">Mandiri Steel</p>
             <h1 className="text-4xl font-bold text-[#9e6621] my-3">
               Harga Terbaik Untuk Material Pilihan
             </h1>

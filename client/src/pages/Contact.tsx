@@ -60,7 +60,7 @@ const Contact = () => {
                     Alamat
                   </h3>
                   <p className="text-gray-600 mt-1 leading-relaxed">
-                    Jl. Merung Raya No.111
+                    Jl. Meruyung Raya No.111
                     <br />
                     Kec. Limo, Kota Depok
                     <br />

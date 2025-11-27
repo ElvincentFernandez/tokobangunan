@@ -306,45 +306,6 @@ const Products = () => {
         </div>
       </section>
 
-      {/* footer placeholder to match visual balance */}
-      <footer className="mt-12 border-t border-gray-200">
-        <div className="container mx-auto px-6 py-10 text-sm text-gray-600">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div>
-              <h4 className="font-semibold text-gray-800 mb-3">Alamat Kami</h4>
-              <p>Jl. Merung Raya No.11</p>
-              <p>Kec. Limo, Kota Depok</p>
-              <p>Jawa Barat, 16514</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-gray-800 mb-3">Links</h4>
-              <ul>
-                <li>Home</li>
-                <li>Products</li>
-                <li>Contact</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-gray-800 mb-3">Help</h4>
-              <ul>
-                <li>Payment Options</li>
-                <li>Returns</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-gray-800 mb-3">Partnership</h4>
-              <p className="text-xs">Enter Your Email Address</p>
-            </div>
-          </div>
-
-          <div className="mt-6 text-gray-400 text-xs">
-            © 2025 Mandiri Steel. All rights reserved
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
