@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // src/pages/admin/Dashboard.tsx
 import { useEffect, useState } from "react"; // --- BARU ---
 import api from "../../api"; // --- BARU ---
@@ -8,7 +9,6 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
-  Line,
 } from "recharts";
 import { DollarSign, ShoppingBag, Box, ArrowUp } from "lucide-react";
 
@@ -252,7 +252,7 @@ const Dashboard = () => {
               {stats.produkTerlaris.map((prod) => (
                 <li key={prod.name} className="py-3">
                   <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <img
                         className="h-10 w-10 rounded-md object-cover"
                         src={prod.image_url || "/Home/bata.jpg"}
@@ -326,7 +326,7 @@ const Dashboard = () => {
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-0">
                         <div className="flex items-center">
                           {/* (Data pesanan & gambar masih statis, perlu API) */}
-                          <div className="h-10 w-10 flex-shrink-0">
+                          <div className="h-10 w-10 shrink-0">
                             <img
                               className="h-10 w-10 rounded-md"
                               src="/path/to/semen.jpg"

@@ -1,106 +1,12 @@
 // client/src/pages/Products.tsx
 import { Link } from "react-router-dom";
 import { Filter, LayoutGrid, List } from "lucide-react";
-
-// --- Data Produk (Contoh) ---
-const products = [
-  {
-    id: 1,
-    name: "Bata Hebel",
-    stock: 800,
-    price: 2500000,
-    oldPrice: 3500000,
-    imageUrl: "https://placehold.co/300x300/e0e0e0/757575?text=Bata+Hebel",
-    badge: { type: "discount", text: "30%" },
-  },
-  {
-    id: 2,
-    name: "Bata Merah",
-    stock: 1240,
-    price: 2500000,
-    imageUrl: "https://placehold.co/300x300/e67e22/ffffff?text=Bata+Merah",
-  },
-  {
-    id: 3,
-    name: "Batako",
-    stock: 0,
-    price: 5000000,
-    imageUrl: "https://placehold.co/300x300/7f8c8d/ffffff?text=Batako",
-  },
-  {
-    id: 4,
-    name: "Bata Roster",
-    stock: 230,
-    price: 7000000,
-    imageUrl: "https://placehold.co/300x300/ecf0f1/757575?text=Bata+Roster",
-    badge: { type: "new", text: "New" },
-  },
-  {
-    id: 5,
-    name: "Besi Beton",
-    stock: 625,
-    price: 2500000,
-    imageUrl: "https://placehold.co/300x300/bdc3c7/757575?text=Besi+Beton",
-  },
-  {
-    id: 6,
-    name: "Besi Wiremesh",
-    stock: 220,
-    price: 2500000,
-    imageUrl: "https://placehold.co/300x300/bdc3c7/757575?text=Wiremesh",
-  },
-  {
-    id: 7,
-    name: "Besi Hollow",
-    stock: 110,
-    price: 7000000,
-    oldPrice: 14000000,
-    imageUrl: "https://placehold.co/300x300/95a5a6/ffffff?text=Hollow",
-  },
-  {
-    id: 8,
-    name: "Besi Siku",
-    stock: 75,
-    price: 5000000,
-    imageUrl: "https://placehold.co/300x300/95a5a6/ffffff?text=Siku",
-  },
-  {
-    id: 9,
-    name: "Semen Putih",
-    stock: 40,
-    price: 2500000,
-    imageUrl: "https://placehold.co/300x300/ecf0f1/e74c3c?text=Semen+Putih",
-    badge: { type: "discount", text: "30%" },
-  },
-  {
-    id: 10,
-    name: "Semen Abu",
-    stock: 0,
-    price: 2500000,
-    imageUrl: "https://placehold.co/300x300/f0f0f0/757575?text=Semen+Abu",
-    showHover: true,
-  },
-  {
-    id: 11,
-    name: "Kayu Balok",
-    stock: 190,
-    price: 7000000,
-    oldPrice: 14000000,
-    imageUrl: "https://placehold.co/300x300/f39c12/ffffff?text=Kayu+Balok",
-    badge: { type: "discount", text: "60%" },
-  },
-  {
-    id: 12,
-    name: "Triplek",
-    stock: 170,
-    price: 5000000,
-    imageUrl: "https://placehold.co/300x300/f1c40f/757575?text=Triplek",
-  },
-];
+import { useProducts } from "../hooks/useProducts";
+import type { Product } from "../types/product"; // Import tipe Product
 
 // --- Komponen Product Card ---
 type ProductCardProps = {
-  product: (typeof products)[0];
+  product: Product; // Gunakan tipe Product langsung
 };
 
 const ProductCard = ({ product }: ProductCardProps) => {
@@ -120,10 +26,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
           {product.badge && (
             <span
               className={`absolute top-2 right-2 z-20 inline-flex items-center justify-center text-xs font-bold rounded-full px-2 py-1
-                ${
-                  product.badge.type === "new"
-                    ? "bg-[#3ac47d] text-white"
-                    : "bg-[#ff6b6b] text-white"
+                ${product.badge.type === "new"
+                  ? "bg-[#3ac47d] text-white"
+                  : "bg-[#ff6b6b] text-white"
                 }
               `}
             >
@@ -175,6 +80,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
 // --- Halaman Produk Utama ---
 const Products = () => {
+  // GUNAKAN useProducts hook dengan benar di dalam komponen
+  const { products } = useProducts();
+
   return (
     <div className="bg-white min-h-screen">
       {/* 1. Header besar (mirip lampiran) */}
@@ -305,7 +213,6 @@ const Products = () => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };

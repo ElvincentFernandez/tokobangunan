@@ -18,6 +18,7 @@ const AdminLogin = () => {
     try {
       await login(username, password);
       // Navigasi sudah di-handle di dalam AuthContext
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setError("Username atau password salah."); // Tampilkan error
     }
@@ -27,7 +28,7 @@ const AdminLogin = () => {
   return (
     <div className="flex min-h-screen bg-white">
       {/* Kolom Kiri: Logo & Branding */}
-      <div className="flex flex-1 items-center justify-center bg-gray-50 lg:flex-[2]">
+      <div className="flex flex-1 items-center justify-center bg-gray-50 lg:flex-2">
         <div className="text-center">
           {/* Ganti 'logo.svg' dengan path logo kamu */}
           <img
