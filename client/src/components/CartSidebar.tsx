@@ -1,7 +1,7 @@
 // src/components/CartSidebar.tsx
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { X, Trash2 } from "lucide-react"; // Ganti Trash2 dari desain Checkout
+import { X } from "lucide-react"; // Ganti Trash2 dari desain Checkout
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
@@ -53,7 +53,7 @@ export default function CartSidebar() {
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-sm">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                     {/* Header */}
-                    <div className="flex-shrink-0 flex items-center justify-between px-4 py-4 sm:px-6 shadow-sm">
+                    <div className="shrink-0 flex items-center justify-between px-4 py-4 sm:px-6 shadow-sm">
                       <Dialog.Title className="text-lg font-semibold text-gray-900">
                         Shopping Cart
                       </Dialog.Title>
@@ -71,7 +71,7 @@ export default function CartSidebar() {
                       <ul className="divide-y divide-gray-200">
                         {cartItems.map((item) => (
                           <li key={item.id} className="flex py-4">
-                            <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                            <div className="h-20 w-20 shrink-0 overflow-hidden rounded-md border border-gray-200">
                               <img
                                 src={item.imageUrl} // Pastikan path gambar benar
                                 alt={item.name}
@@ -120,7 +120,7 @@ export default function CartSidebar() {
                           to="/checkout"
                           onClick={closeCart} // Tutup sidebar saat pindah halaman
                           className="flex items-center justify-center rounded-md border border-transparent bg-[#9e6621] px-6 py-3 text-base font-medium text-white shadow-sm hover:opacity-90"
-                          // Ganti warna BG sesuai tombol di Home.tsx
+                        // Ganti warna BG sesuai tombol di Home.tsx
                         >
                           Checkout
                         </Link>
