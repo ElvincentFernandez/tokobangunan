@@ -167,7 +167,7 @@ const Home = () => {
           {/* Grid Foto Mosaik */}
           <div
             className="grid grid-cols-4 grid-rows-2 gap-4 h-[500px] bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/Home/mandiri.png')" }}
+            style={{ backgroundImage: "url('/Home/mandiri1.png')" }}
           ></div>
         </div>
       </section>

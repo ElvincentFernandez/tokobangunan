@@ -1,8 +1,62 @@
 // client/src/pages/Contact.tsx
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Clock } from "lucide-react";
+type FormData = {
+  nama: string;
+  email: string;
+  subjek: string;
+  pesan: string;
+};
 
-const Contact = () => {
+    const Contact: React.FC = () => {
+      const [formData, setFormData] = useState<FormData>({
+        nama: "",
+        email: "",
+        subjek: "",
+        pesan: "",
+      });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({ ...prev, [name as keyof FormData]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Gagal mengirim data ke server");
+      }
+
+      const result = await response.json();
+      alert(result.message);
+
+      // ✅ RESET FORM SETELAH BERHASIL
+      setFormData({
+        nama: "",
+        email: "",
+        subjek: "",
+        pesan: "",
+      });
+
+    } catch (error) {
+      console.error("ERROR FETCH:", error);
+      alert("Backend tidak dapat dihubungi. Pastikan server hidup.");
+    }
+  };
+
+
+
   return (
     <div className="bg-white">
       {/* 1. Hero Section (Contact) */}
@@ -105,7 +159,7 @@ const Contact = () => {
             </div>{" "}
             {/* End Kolom Kiri */}
             {/* Kolom Kanan: Form */}
-            <form action="#" method="POST" className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {/* Nama Anda */}
               <div>
                 <label
@@ -119,6 +173,8 @@ const Contact = () => {
                   id="nama"
                   name="nama"
                   placeholder="Nama Lengkap"
+                  value={formData.nama}
+                  onChange={handleChange}
                   className="w-full px-1 py-2 bg-transparent border-0 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-b-2 focus:border-brand-primary transition duration-200"
                 />
               </div>
@@ -136,6 +192,8 @@ const Contact = () => {
                   id="email"
                   name="email"
                   placeholder="Alamat Email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-1 py-2 bg-transparent border-0 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-b-2 focus:border-brand-primary transition duration-200"
                 />
               </div>
@@ -153,6 +211,8 @@ const Contact = () => {
                   id="subjek"
                   name="subjek"
                   placeholder="Kepentingan / Terkait (Opsional)"
+                  value={formData.subjek}
+                  onChange={handleChange}
                   className="w-full px-1 py-2 bg-transparent border-0 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-b-2 focus:border-brand-primary transition duration-200"
                 />
               </div>
@@ -169,21 +229,22 @@ const Contact = () => {
                   id="pesan"
                   name="pesan"
                   rows={5}
-                  placeholder="Hall Saya ingin bertanya mengenai..."
+                  placeholder="Halo, saya ingin bertanya mengenai..."
+                  value={formData.pesan}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-transparent border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent transition duration-200"
                 ></textarea>
               </div>
 
               {/* Tombol Send */}
               <div>
-                <button
-                  type="submit"
+                <button type="submit"
                   className="px-10 py-3 bg-[#9e6621] cursor-pointer text-white font-semibold rounded-md shadow-md hover:opacity-90 transition-opacity duration-200"
                 >
                   Send
                 </button>
               </div>
-            </form>{" "}
+            </form>
             {/* End Kolom Kanan */}
           </div>{" "}
           {/* End Grid */}

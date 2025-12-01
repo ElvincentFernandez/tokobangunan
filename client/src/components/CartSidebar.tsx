@@ -1,7 +1,7 @@
 // src/components/CartSidebar.tsx
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { X, Trash2 } from "lucide-react"; // Ganti Trash2 dari desain Checkout
+import { X } from "lucide-react"; // ✅ Trash2 dihapus
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
@@ -16,7 +16,6 @@ const formatRupiah = (number: number) =>
 export default function CartSidebar() {
   const { isCartOpen, closeCart, cartItems } = useCart();
 
-  // Hitung subtotal
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -25,7 +24,7 @@ export default function CartSidebar() {
   return (
     <Transition.Root show={isCartOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={closeCart}>
-        {/* Backdrop */}
+        
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -52,8 +51,9 @@ export default function CartSidebar() {
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-sm">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+
                     {/* Header */}
-                    <div className="flex-shrink-0 flex items-center justify-between px-4 py-4 sm:px-6 shadow-sm">
+                    <div className="shrink-0 flex items-center justify-between px-4 py-4 sm:px-6 shadow-sm">
                       <Dialog.Title className="text-lg font-semibold text-gray-900">
                         Shopping Cart
                       </Dialog.Title>
@@ -71,9 +71,9 @@ export default function CartSidebar() {
                       <ul className="divide-y divide-gray-200">
                         {cartItems.map((item) => (
                           <li key={item.id} className="flex py-4">
-                            <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                            <div className="h-20 w-20 shrink-0 overflow-hidden rounded-md border border-gray-200">
                               <img
-                                src={item.imageUrl} // Pastikan path gambar benar
+                                src={item.imageUrl}
                                 alt={item.name}
                                 className="h-full w-full object-cover object-center"
                               />
@@ -87,14 +87,14 @@ export default function CartSidebar() {
                                     type="button"
                                     className="font-medium text-gray-400 hover:text-red-500"
                                   >
-                                    <X size={16} />{" "}
-                                    {/* Sesuai desain Chart.jpg */}
+                                    <X size={16} />
                                   </button>
                                 </div>
                                 <p className="mt-1 text-sm text-gray-500">
                                   {formatRupiah(item.price)}
                                 </p>
                               </div>
+
                               <div className="flex flex-1 items-end justify-between text-sm">
                                 <p className="text-gray-500">
                                   Qty: {item.quantity}
@@ -109,7 +109,7 @@ export default function CartSidebar() {
                       </ul>
                     </div>
 
-                    {/* Footer (Total & Tombol) */}
+                    {/* Footer */}
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-lg font-bold text-gray-900">
                         <p>Subtotal</p>
@@ -118,14 +118,14 @@ export default function CartSidebar() {
                       <div className="mt-6">
                         <Link
                           to="/checkout"
-                          onClick={closeCart} // Tutup sidebar saat pindah halaman
-                          className="flex items-center justify-center rounded-md border border-transparent bg-[#9e6621] px-6 py-3 text-base font-medium text-white shadow-sm hover:opacity-90"
-                          // Ganti warna BG sesuai tombol di Home.tsx
+                          onClick={closeCart}
+                          className="flex items-center justify-center rounded-md bg-[#9e6621] px-6 py-3 text-base font-medium text-white shadow-sm hover:opacity-90"
                         >
                           Checkout
                         </Link>
                       </div>
                     </div>
+
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

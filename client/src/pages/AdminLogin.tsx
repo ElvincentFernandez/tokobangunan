@@ -27,11 +27,11 @@ const AdminLogin = () => {
   return (
     <div className="flex min-h-screen bg-white">
       {/* Kolom Kiri: Logo & Branding */}
-      <div className="flex flex-1 items-center justify-center bg-gray-50 lg:flex-[2]">
+      <div className="flex flex-1 items-center justify-center bg-gray-50 lg:flex-2">
         <div className="text-center">
           {/* Ganti 'logo.svg' dengan path logo kamu */}
           <img
-            src="/logo.svg"
+            src="/assets/images/logo.png"
             alt="Mandiri Steel Logo"
             className="mx-auto mb-4 w-24 h-24"
             style={{ color: goldColor }} // Jika logo adalah font/svg
@@ -48,7 +48,7 @@ const AdminLogin = () => {
           <div>
             {/* Ganti 'logo.svg' dengan path logo kamu */}
             <img
-              src="/logo.svg"
+              src="/assets/images/logo.png"
               alt="Mandiri Steel Logo"
               className="mb-4 h-12 w-auto"
               style={{ color: goldColor }}
@@ -56,10 +56,6 @@ const AdminLogin = () => {
             <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">
               Log in to your account
             </h2>
-            <p className="mt-2 text-sm text-gray-600">
-              Please log in using the username and password provided by the
-              administrator.
-            </p>
           </div>
 
           <div className="mt-8">
@@ -154,7 +150,15 @@ const AdminLogin = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex w-full justify-center rounded-md ... disabled:opacity-50"
+                  className="
+                    flex w-full justify-center items-center
+                    rounded-lg px-6 py-3
+                    font-semibold text-white
+                    shadow-md hover:shadow-xl
+                    transition-all duration-200 ease-in-out
+                    transform hover:-translate-y-0.5 active:translate-y-0
+                    disabled:opacity-50 disabled:cursor-not-allowed
+                  "
                   style={{ backgroundColor: goldColor }}
                 >
                   {isLoading ? "Logging in..." : "Log in"}

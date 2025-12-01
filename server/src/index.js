@@ -366,6 +366,11 @@ app.get("/api/admin/dashboard-stats", isAdmin, async (req, res) => {
   }
 });
 
+// ================= CONTACT ROUTES =================
+const contactRoutes = require("./routes/contactRoutes");
+app.use("/api/contact", contactRoutes);
+
+
 // Jalankan server
 app.listen(PORT, () => {
   console.log(`Server admin berjalan di http://localhost:${PORT}`);
